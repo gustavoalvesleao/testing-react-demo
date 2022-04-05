@@ -64,7 +64,7 @@ function useFormSubmission({ endpoint, data }) {
   return state;
 }
 
-function Login({ onSubmit }) {
+export function Login({ onSubmit }) {
   function handleSubmit(event) {
     event.preventDefault();
     const { email, password } = event.target.elements;
