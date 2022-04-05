@@ -1,25 +1,9 @@
 import * as React from "react";
-import { render, screen } from "@testing-library/react";
-import "@testing-library/jest-dom";
-import userEvent from "@testing-library/user-event";
-import { build, perBuild } from "@jackfranklin/test-data-bot";
-import faker from "faker";
+import { screen } from "@testing-library/react";
+
+import { setup, buildLoginCredentials } from "../../test/test-utils";
 
 import { Login } from "./LoginSubmission";
-
-const buildLoginCredentials = build("User", {
-  fields: {
-    email: perBuild(() => faker.internet.email()),
-    password: perBuild(() => faker.internet.password()),
-  },
-});
-
-function setup(jsx) {
-  return {
-    user: userEvent.setup(),
-    ...render(jsx),
-  };
-}
 
 test("submitting the form calls onSubmit with email and password", async () => {
   const handleSubmit = jest.fn();
